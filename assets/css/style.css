@@ -1,20 +1,7 @@
 :root {
     --lightblue: #3498db;
     --red: #e74c3c;
-    --lightred: #f9eae7;
-    --space-grey: #33393f;
-    --lightgrey: #D3D3D3;
-    --green: #90EE90;
-
-  }
-
-  :rootxx {
-    --light: #f6f6f6;
-    --darkblue: #2c3e50;
-    --lightblue: #3498db;
-    --red: #e74c3c;
-    --lightred: #f9eae7;
-    --lightyellow: #fff5d1;
+    /*--lightred: #f9eae7;*/
     --space-grey: #33393f;
     --lightgrey: #D3D3D3;
     --green: #90EE90;
@@ -51,6 +38,7 @@
     font-size: 2.5rem;
     font-weight: 500;
   }
+
   img {
     display:block;
   }
@@ -62,11 +50,11 @@
   }
 
    /* style project rows based on status (late, due today) */
-   .project-late {
+   .project-latexx {
     background-color: var(--lightred);
   }
   
-  .project-today {
+  .project-todayxx {
     background-color: var(--lightyellow);
   }
   .calendar-container {
@@ -83,14 +71,6 @@
     height: 100px;
     width:100%;
     background-color: var(--green);
-    color: var(--light);
-    border:0px;
-  }
-
-  .calendar-event-pastxxx {
-    height: 100px;
-    width:100%;
-    background-color: var(--red);
     color: var(--light);
     border:0px;
   }
@@ -120,18 +100,14 @@
     height:100px;
   }
 
-  .calendar-time:first-of-class {
-    border-top: solid 1px var(--space-grey);
-  }
-
-  #save-all {
+   #save-all {
     display:inline;
     float:left;
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   #clear-all {
     display:inline;
     float:right;
-    font-size: 2rem;
+    font-size: 1.75rem;
   }

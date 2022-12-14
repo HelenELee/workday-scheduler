@@ -31,6 +31,7 @@
           </header>
     </header>
     <main>
+      <!--use bootstrap to layout rows in flexible grid-->
         <div class="container" id="calendar-container">
             <div class="row m-1 row-container">
               <div class="col-2 calendar-time" id="time-0" data-time="9">
@@ -140,22 +141,25 @@
                     <img src="./assets/images/clear.png" id="clear-img-8"/>
                 </div>
               </div>
+              <!--save all/clear all buttons-->
               <div class="row m-1">
-                <div class="col-12">
-                  <p>Remember to save your changes!</p>
+                <div class="col-2">
+                  <button class="btn btn-primary m-5" id="save-all">Save All</button>
+                </div>
+                <div class="col-8">
+                  <p class="sub-title m-5 mx-auto">Remember to save your changes!</p>
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-primary m-5" id="clear-all">Clear All</button>
                 </div>
               </div>
-              <!--Save ALL and Clear ALL buttons-->
               
           </div>
-          <section class="m-5">
-            <button class="btn btn-primary btn-lg float-left" id="save-all">Save All</button>
-            <button class="btn btn-primary btn-lg float-right" id="clear-all">Clear All</button>
-          </section>
+          
     </main>
 </body>
 
-<!-- Link the DayJS library -->
+<!-- Link the DayJS library and jquery libraries-->
 <script
 src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
 integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
