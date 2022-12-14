@@ -8,7 +8,6 @@
 
   }
   
-  /* Apply custom Google font */
   body {
     font-family: 'Fira Sans', sans-serif;
     font-weight: 400;
@@ -49,6 +48,12 @@
     font-style: italic;
   }
 
+  #time-display {
+    font-size: 1.75rem;
+    font-weight: 300;
+    
+  }
+
    /* style project rows based on status (late, due today) */
    .project-latexx {
     background-color: var(--lightred);
@@ -57,16 +62,18 @@
   .project-todayxx {
     background-color: var(--lightyellow);
   }
-  .calendar-container {
-    width:50%;
+  /*prevent scheduler spreading across full page*/
+  #calendar-container {
+    width:70%;
   }
+  /*default to green*/
   .calendar-row {
     height: 100px;
     background-color: var(--green);
     color: var(--light);
     border-bottom: solid 1px var(--space-grey);
   }
-
+ /*default to green*/
   .calendar-event {
     height: 100px;
     width:100%;
@@ -74,40 +81,29 @@
     color: var(--light);
     border:0px;
   }
-
+  /*timeslot in past*/
   .past{
     background-color: var(--lightgrey);
   }
-  
+  /*timeslot current*/
   .current{
     background-color: var(--red);
   }
-
+  /*style section holding save/clear images in right hand column*/
   .calendar-save {
     border-bottom: solid 1px var(--space-grey);
     padding-top:15px;
     background-color: var(--lightblue);
     border-radius:0px 15px 15px 0px
   }
-
+  /*style section holding time slots in left hand column*/
   .calendar-time {
     display: inline;
-    float:right;
     border-bottom: solid 1px var(--space-grey);
   }
 
-  .row-container {
+  .row-containerxx {
     height:100px;
   }
 
-   #save-all {
-    display:inline;
-    float:left;
-    font-size: 1.75rem;
-  }
-
-  #clear-all {
-    display:inline;
-    float:right;
-    font-size: 1.75rem;
-  }
+  
