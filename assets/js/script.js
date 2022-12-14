@@ -1,9 +1,12 @@
-var calendarContainerX = document.getElementById("calendar-container");
+//get main container for scheduler
 var calendarContainer = $('#calendar-container');
+//get save all button element
 var saveAll = $('#save-all');
+//get clear all button element
 var clearAll = $('#clear-all');
 
 //get ordinal number suffix for any number
+//usd when printing date at top of scheduler
 const nth = function(d) {
     if (d > 3 && d < 21) return 'th';
     switch (d % 10) {
@@ -13,7 +16,7 @@ const nth = function(d) {
         default: return "th";
     }
 }
-
+//write date/time to top of scheduler
   function setTime() {
     timeInterval = setInterval(function () {
       //get current time
@@ -31,41 +34,41 @@ const nth = function(d) {
     }, 1000);
   }
 
-  //pass id of textarea and text in textarea
+  //save to storage - pass id of textarea and text value in textarea
+  //storage is an array which holds the event text for each time slot 
+  //0 indexed array with first slot holding the 9am text value
   function saveToStorage(eventID, eventText) {
-    
-    //console.log("saveToStorage - " + eventID + "/" + eventText);
     let storedEvents = localStorage.getItem("events");
     let arrayEvents;
     //check if first time to store to local storage
     //create blank array and add element in correct position
     if (storedEvents == null){
+      //create blank array
         arrayEvents = Array(8).fill("");
-       // arrayEvents = Array.from(Array(8).keys())
+        //add text to correct place in array
         arrayEvents[eventID] = eventText;
-        //arrayEvents = [eventText];
+
     } else {
        //already have saved events so update array with new event
         arrayEvents = JSON.parse(storedEvents);
         arrayEvents[eventID] = eventText;
     }
     localStorage.setItem("events", JSON.stringify(arrayEvents));
-    //print updated text back to screen
-    //printEvents()
+    
   }
 
   function printEvents() {
-    //console.log('printEvents');
     let storedEvents = localStorage.getItem("events");
     let arrayEvents;
     //check if there is anything in local storage
     if (storedEvents != null){
         //convert from string to array
         arrayEvents = JSON.parse(storedEvents);
-        //loop through all rows in scheduler and set value
+        //loop through all rows in scheduler and set value to text area
         for (let i=0; i<arrayEvents.length; i++){
             let eventId = "textarea#event-" + i;
             $(eventId).val(arrayEvents[i]);
+            //ensure border is not shown - border is black when there is unsaved text in textarea
             $(eventId).attr("style", "border: none");
         }
     } else {
@@ -118,78 +121,59 @@ const nth = function(d) {
   function updateEventHandler(event) {
     event.preventDefault();
     let eventText;
-    //fid out which save icon was clicked
+    //find out which save icon was clicked
     let saveClicked = $(event.target);
     //id in the format save-img-1 - split out into array
     let arrayID = event.target.id.split("-"); 
     let elementAction = arrayID[0]; //see if it was a save or clear
     let saveId = arrayID[2];        //get which row/id
     let eventId = "textarea#event-" + saveId;
-   // console.log(elementAction);
+   
     if(elementAction === "save") {
-       // alert('save');
         eventText =  $(eventId).val(); //save request so get value of textarea in that row
     } else {
-       // alert('clear');
        $(eventId).val('');
         eventText = ""; //clear request so will set textarea to blank
     }
     //actualy save to local storage
-    //alert(saveId);
+    //clear border to indicate its saved
     $(eventId).attr("style", "border: none");
     saveToStorage(saveId, eventText);
     
   }
-  
+  //save all text area values
   function saveAllHandler(event) {
     event.preventDefault();
-    //alert(document.getElementById("event-" + 4).value);
+    //remove anything thats there already
     localStorage.clear("events");
     for (let i=0; i<9; i++){
         let eventId = "textarea#event-" + i;
+        //get value from text area
         var eventText = $(eventId).val();
-        //var eventText = document.getElementById("event-" + i).value;
-        console.log("event text for " + "event-" + i + "/" + eventText);
-        //console.log("saving - " + i + "/" + $(eventText).val());
-        
-        //console.log("EVENTID + " + $(eventId).val());
+        //clear border - indicates its been saved
         $(eventId).attr("style", "border: none");
-        //saveToStorage(i, $(eventId).val());
+        //actually store
         saveToStorage(i, eventText);
     }
   }
 
-  function saveAllHandlerxx(event) {
-    event.preventDefault();
-    //alert(document.getElementById("event-" + 4).value);
-    localStorage.clear("events");
-    for (let i=0; i<9; i++){
-      //XX Changed this
-        //var eventText = document.getElementById("event-" + i).value;
-        //let eventId = "#event-" + i;
-        var eventText = document.getElementById("event-" + i).value;
-        console.log("event text for " + "event-" + i + "/" + eventText);
-        //console.log("saving - " + i + "/" + $(eventText).val());
-        let eventId = "textarea#event-" + i;
-        console.log($(eventId).val());
-        //saveToStorage(i, $(eventId).val());
-        saveToStorage(i, eventText);
-    }
-  }
-
+  //clear all values from text areas
   function clearAllHandler(event) {
     event.preventDefault();
     localStorage.clear("events");
+    //reprint values to screen
     printEvents();
   }
 
+  //sets border around text are as soon as text is entered
+  //so you can see whats not saved yet
   function keyPressHandler(event) {
     event.currentTarget.setAttribute(
       "style", "border: solid 5px black"
     );
   
   }
-  //add event listeners to celendar-container but specify selector 
+  //add event listeners to calendar-container but specify selector 
   //to ensure event delegation to calendar-save class
   calendarContainer.on('click', '.calendar-save', updateEventHandler);
 
@@ -197,9 +181,11 @@ const nth = function(d) {
   //have not saved it. The border is cleared on save
   calendarContainer.on('keypress', '.calendar-event', keyPressHandler);
   
+  //add event handlers for save all and clear all
   saveAll.on('click', saveAllHandler);
   clearAll.on('click', clearAllHandler);
 
+  
   setTime();
   printEvents();
   setTimeblockColours();
