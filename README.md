@@ -28,7 +28,7 @@ Below is a screenshot of the webpage.
 
 
 
-[To view the javascript quiz webpage click here.](https://helenelee.github.io/workday-scheduler/)
+[To view the work day scheduler webpage click here.](https://helenelee.github.io/workday-scheduler/)
 
 
 ## Credits
