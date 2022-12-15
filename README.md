@@ -21,7 +21,7 @@ N/A
 
 ## Usage
 
-Please read the comments in script.js file to see the explanation of how the code works. Enter an event in a row and save the details by clicking on the save icon to the right of the event row. Clear a row by clicking the clear icon (X icon) to the right of the event row. When text has been entered or updated the border around the text are will turn black so you can see what has been saved. To save all or clear all rows at once use the 'Save All' or 'Clear All' buttons at the bottom of he screen. The rows are colour coded so you can see if the time slot is in the past, current or future.
+Please read the comments in script.js file to see the explanation of how the code works. Enter an event in a row and save the details by clicking on the save icon to the right of the event row. Clear a row by clicking the clear icon (X icon) to the right of the event row. When text has been entered or updated the border around the text will turn black so you can see what has been saved. To save all or clear all rows at once use the 'Save All' or 'Clear All' buttons at the bottom of the screen. The rows are colour coded so you can see if the time slot is in the past, current or future.
 
 Below is a screenshot of the webpage. 
 
