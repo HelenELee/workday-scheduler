@@ -35,6 +35,7 @@ Below is a screenshot of the webpage.
 ## Credits
 
 Would like to thank the instructors at UWA Bootcamp. 
+Icons obtained from https://icons8.com/
 
 ## License
 
